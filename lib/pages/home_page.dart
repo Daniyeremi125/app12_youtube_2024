@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-  
-  get kBrandSecundaryColor => null;
 
   @override
   Widget build(BuildContext context) {
@@ -50,24 +48,21 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   ItemFilterWidget(
-                    texto: "Todos"
+                    texto: "Todos",
+                    isSelected: true,
                   ),
                   ItemFilterWidget(
-                    texto: "Maxis"
+                    texto: "Mixes",
+                    isSelected: false,
                   ),
                   ItemFilterWidget(
-                    texto: "Musica"
+                    texto: "Música",
+                    isSelected: false,
                   ),
                   ItemFilterWidget(
-                    texto: "Programacion"
+                    texto: "Programación",
+                    isSelected: false,
                   ),
-                  ItemFilterWidget(
-                    texto: "+18"
-                  ),
-                  ItemFilterWidget(
-                    texto: "Visto"
-                  ),
-                  ItemFilterWidget(),
                 ],
               ),
             )
