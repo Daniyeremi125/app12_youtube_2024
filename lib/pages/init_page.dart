@@ -1,3 +1,4 @@
+
 import 'package:app12_youtube_2024/pages/home_page.dart';
 import 'package:app12_youtube_2024/ui/general/colors.dart';
 import 'package:flutter/material.dart';
@@ -12,18 +13,18 @@ class InitPage extends StatefulWidget {
 class _InitPageState extends State<InitPage> {
   int _currentIndex = 0;
 
-  List<Widget> _pages = [
-    HomePage(),
-    Center(child: Text("Shorts")),
-    Center(child: Text("Agregar")),
-    Center(child: Text("Suscripciones")),
-    Center(child: Text("Biblioteca")),
+  final List<Widget> _pages = [
+    HomePageprof(),
+    const Center(child: Text("Shorts")),
+    const Center(child: Text("Agregar")),
+    const Center(child: Text("Suscripciones")),
+    const Center(child: Text("Biblioteca")),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBrandPrimaryColor, // Cambiado de ; a ,
+      backgroundColor: kBrandPrimaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: kBrandPrimaryColor,
@@ -58,14 +59,14 @@ class _InitPageState extends State<InitPage> {
                   
                   decoration: BoxDecoration(
                     color: Colors.red,
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(13),
                   ),
                   constraints: const BoxConstraints(
                     minWidth: 10,
                     minHeight: 10,
                   ),
                   child: const Text(
-                    '9+',
+                    '5+',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -97,7 +98,8 @@ class _InitPageState extends State<InitPage> {
             width: 12,
           ),
         ],
-      ),      body: _pages[_currentIndex],
+      ),
+      body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: kBrandPrimaryColor,
         type: BottomNavigationBarType.fixed,
@@ -107,18 +109,17 @@ class _InitPageState extends State<InitPage> {
         unselectedItemColor: Colors.white70,
         currentIndex: _currentIndex,
         onTap: (int value) {
-          setState(() {
-            _currentIndex = value;
-          });
+          _currentIndex = value;
+          setState(() {});
         },
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: "Principal",
             icon: Icon(
               Icons.home,
             ),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: "Shorts",
             icon: Icon(
               Icons.play_arrow,
@@ -127,20 +128,20 @@ class _InitPageState extends State<InitPage> {
           BottomNavigationBarItem(
             label: "",
             icon: Container(
-              margin: EdgeInsets.only(top: 5),
-              child: Icon(
+              margin: const EdgeInsets.only(top: 5),
+              child: const Icon(
                 Icons.add_circle_outline_rounded,
                 size: 35.0,
               ),
             ),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: "Suscripciones",
             icon: Icon(
               Icons.subscriptions_rounded,
             ),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: "Biblioteca",
             icon: Icon(
               Icons.video_collection_rounded,

@@ -1,18 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:app12_youtube_2024/models/video_model.dart';
 import 'package:app12_youtube_2024/services/api_service.dart';
 import 'package:app12_youtube_2024/ui/general/colors.dart';
 import 'package:app12_youtube_2024/ui/widgets/item_filter_widget.dart';
 import 'package:app12_youtube_2024/ui/widgets/item_video_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:app12_youtube_2024/pages/video_detail.dart';
 
-class HomePage extends StatefulWidget {
+
+class HomePageprof extends StatefulWidget {
+  const HomePageprof({super.key});
+
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePageprof> createState() => _HomePageprofState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageprofState extends State<HomePageprof> {
   final APIService _apiService = APIService();
-
   List<VideoModel> videos = [];
 
   @override
@@ -28,9 +31,18 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+
+  void navigateToVideoDetail(VideoModel videoModel) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => VideoDetailPage(videoModel: videoModel), 
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    _apiService.getVideos();
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -91,14 +103,16 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListView.builder(
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                itemCount: videos.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ItemVideoWidget(
-                    videoModel: videos[index],
-                  );
-                }),
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
+              itemCount: videos.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ItemVideoWidget(
+                  videoModel: videos[index],
+                  onTap: () => navigateToVideoDetail(videos[index]), 
+                );
+              },
+            ),
           ],
         ),
       ),
