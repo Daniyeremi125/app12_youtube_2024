@@ -23,8 +23,9 @@ class _InitPageState extends State<InitPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBrandPrimaryColor,
+      backgroundColor: kBrandPrimaryColor, // Cambiado de ; a ,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: kBrandPrimaryColor,
         title: Image.asset(
           "assets/images/logo.png",
@@ -33,41 +34,70 @@ class _InitPageState extends State<InitPage> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.cast,
               color: Colors.white,
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.notification_add,
-              color: Colors.white,
-            ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              IconButton(
+                onPressed: () {
+                  
+                },
+                icon: const Icon(
+                  Icons.notification_add,
+                  color: Colors.white,
+                ),
+              ),
+              Positioned(
+                right: 0,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 10,
+                    minHeight: 10,
+                  ),
+                  child: const Text(
+                    '9+',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 11,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               color: Colors.white,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: kBrandSecundaryColor,
             backgroundImage: NetworkImage(
               "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             ),
             radius: 15,
           ),
-          SizedBox(
+          const SizedBox(
             width: 12,
           ),
         ],
-      ),
-      body: _pages[_currentIndex],
+      ),      body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: kBrandPrimaryColor,
         type: BottomNavigationBarType.fixed,
@@ -77,8 +107,9 @@ class _InitPageState extends State<InitPage> {
         unselectedItemColor: Colors.white70,
         currentIndex: _currentIndex,
         onTap: (int value) {
-          _currentIndex = value;
-          setState(() {});
+          setState(() {
+            _currentIndex = value;
+          });
         },
         items: [
           BottomNavigationBarItem(
